@@ -1,7 +1,7 @@
 import * as React from 'react';
 // import { HelloComponent } from './hello';
 import TableCompos from './table';
-import { Input } from 'antd';
+import { Input, Table } from 'antd';
 // interface Props { }
 // interface State { }
 
@@ -19,19 +19,24 @@ export const App = () => {
     width: 100,
     enableDrag: true,
     editable: true,
+    align: 'center',
+    sorter: true,
     render: (val) => <Input />
   }, {
     title: 'code1',
     dataIndex: 'code1',
     width: 100,
     enableDrag: true,
+    align: 'center',
+    sorter: true,
     // editable: true,
-    render: (val) => <span>{val}</span>
+    render: (val) => <span className="ant-table-header-column">{val}</span>
   }, {
     title: 'code2',
     dataIndex: 'code2',
     width: 100,
     enableDrag: true,
+    align: 'center',
     // editable: true,
     render: (val) => <span>{val}</span>
   }, {
@@ -39,6 +44,7 @@ export const App = () => {
     dataIndex: 'code3',
     width: 100,
     enableDrag: true,
+    align: 'center',
     // editable: true,
     render: (val) => <span>{val}</span>
   }, {
@@ -46,11 +52,13 @@ export const App = () => {
     dataIndex: 'code4',
     width: 100,
     enableDrag: true,
+    align: 'center',
     // editable: true,
     render: (val) => <span>{val}</span>
   }, {
     title: 'code5',
     dataIndex: 'code5',
+    align: 'center',
     // editable: true,
     render: (val) => <span>{val}</span>
   }]
@@ -72,8 +80,9 @@ export const App = () => {
         title={Ttitle}
         bordered={true}
         rowSelection={rowSelections}
-        scroll={{ x: 100 }}
+        scroll={{ x: 600 }}
       />
+      <Table />
     </>
   )
 }

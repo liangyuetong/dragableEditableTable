@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef, Children } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Input } from 'antd';
 import { ColumnProps, TableProps } from '../node_modules/antd/es/table';
 import Table from '../node_modules/antd/es/table/index';
@@ -20,6 +20,7 @@ export interface Col<T> extends ColumnProps<object> {
   enableDrag?: boolean;
   onCell?: (record: any) => any;
   editable?: boolean;
+  align?: left | right | center;
 }
 
 export interface TableComposProps extends TableProps<object> {
@@ -58,7 +59,7 @@ export default class TableCompos extends React.Component<TableComposProps, Table
     const { onResize, record = {}, ...rest } = props;
     // width===true,enableDrag===true可拖动
 
-    // console.log(record);
+    console.log(record.width);
     return record.enableDrag ?
       <Resizable
         width={record.width}
@@ -88,7 +89,7 @@ export default class TableCompos extends React.Component<TableComposProps, Table
     }
   }
   render() {
-    const { columns, dataSource, ...rest } = this.props;
+    // const { dataSource, ...rest } = this.props;
     const cols = this.state.columns.map((item, index) => ({
       enableDrag: false,
       ...item,
@@ -107,6 +108,6 @@ export default class TableCompos extends React.Component<TableComposProps, Table
     })
     )
     // const [form] = Form.useForm();
-    return <Table {...rest} dataSource={dataSource} columns={cols} className="mtable" components={this.components} />
+    return <Table {...this.props} columns={cols} className="mtable" components={this.components} />
   }
 }
